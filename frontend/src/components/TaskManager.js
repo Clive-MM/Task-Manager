@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import './styles/styles.css';
+
 
 function TaskManager() {
     const [tasks, setTasks] = useState([]);
 
     const handleAddTask = (event) => {
         event.preventDefault();
+
         const taskInput = document.getElementById("task");
         const newTask = taskInput.value;
         if (newTask.trim() !== "") {
@@ -21,13 +24,13 @@ function TaskManager() {
             return task;
         });
         setTasks(updatedTasks);
-    };
+    }; 
 
     const calculateTaskSummary = () => {
         const totalTasks = tasks.length;
         const completedTasks = tasks.filter(task => task.done).length;
         const pendingTasks = totalTasks - completedTasks;
-        return { totalTasks, completedTasks, pendingTasks };
+        return { totalTasks, completedTasks, pendingTasks }; 
     };
 
     
@@ -35,8 +38,8 @@ function TaskManager() {
 
     return (
         <div className="container">
-            <div>
-                <h1 className="header">TASK MANAGER</h1>
+            <div id="title">
+                <h1 id="header">TASK MANAGER</h1>
             </div>
             <div>
                 <form>
@@ -56,14 +59,14 @@ function TaskManager() {
             </div>
 
             <div>
-                <ul>
+                <ol>
                     {tasks.map((task, index) => (
                         <li key={index} style={{ textDecoration: task.done ? 'line-through' : 'none' }}>
                             {task.task}
                             {!task.done && <button onClick={() => handleTaskDone(index)}>DONE</button>}
                         </li>
                     ))}
-                </ul>
+                </ol>
             </div>
 
             <div className="summary">
