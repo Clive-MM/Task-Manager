@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import './styles/styles.css';
 
-
 function TaskManager() {
     const [tasks, setTasks] = useState([]);
 
     const handleAddTask = (event) => {
-        event.preventDefault();
-
-        const taskInput = document.getElementById("task");
-        const newTask = taskInput.value;
-        if (newTask.trim() !== "") {
-            setTasks([...tasks, { task: newTask, done: false }]);
-            taskInput.value = "";
+        if (event.key === 'Enter') {
+            const taskInput = event.target;
+            const newTask = taskInput.value.trim();
+            if (newTask !== "") {
+                setTasks([...tasks, { task: newTask, done: false }]);
+                taskInput.value = "";
+            }
         }
     };
 
@@ -33,7 +32,6 @@ function TaskManager() {
         return { totalTasks, completedTasks, pendingTasks };
     };
 
-
     const { totalTasks, completedTasks, pendingTasks } = calculateTaskSummary();
 
     return (
@@ -47,15 +45,11 @@ function TaskManager() {
                         <label htmlFor="task">Task</label>
                         <textarea
                             id="task"
-                            rows="10" // Specify the number of visible rows
-                            cols="50" // Specify the number of visible columns
+                            rows="10"
+                            cols="50"
                             placeholder="Enter Your Task"
+                            onKeyPress={handleAddTask}
                         ></textarea>
-                    </div>
-
-
-                    <div id="button">
-                        <button type="button" className="btn btn-primary" onClick={handleAddTask}>ADD TASK</button>
                     </div>
                 </form>
             </div>
@@ -71,7 +65,7 @@ function TaskManager() {
                 </ol>
             </div>
 
-            <div class="Card">
+            <div className="Card">
                 <div><p>TOTAL TASKS: {totalTasks}</p></div>
                 <div><p>COMPLETED TASKS: {completedTasks}</p></div>
                 <div><p>PENDING TASKS: {pendingTasks}</p></div>
