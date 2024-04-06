@@ -24,16 +24,16 @@ function TaskManager() {
             return task;
         });
         setTasks(updatedTasks);
-    }; 
+    };
 
     const calculateTaskSummary = () => {
         const totalTasks = tasks.length;
         const completedTasks = tasks.filter(task => task.done).length;
         const pendingTasks = totalTasks - completedTasks;
-        return { totalTasks, completedTasks, pendingTasks }; 
+        return { totalTasks, completedTasks, pendingTasks };
     };
 
-    
+
     const { totalTasks, completedTasks, pendingTasks } = calculateTaskSummary();
 
     return (
@@ -41,18 +41,20 @@ function TaskManager() {
             <div id="title">
                 <h1 id="header">TASK MANAGER</h1>
             </div>
-            <div>
+            <div id="form">
                 <form>
-                    <div>
-                        <label htmlFor="task">TASK</label>
-                        <input
-                            type="text"
+                    <div className="form">
+                        <label htmlFor="task">Task</label>
+                        <textarea
                             id="task"
+                            rows="10" // Specify the number of visible rows
+                            cols="50" // Specify the number of visible columns
                             placeholder="Enter Your Task"
-                        ></input>
+                        ></textarea>
                     </div>
 
-                    <div>
+
+                    <div id="button">
                         <button type="button" className="btn btn-primary" onClick={handleAddTask}>ADD TASK</button>
                     </div>
                 </form>
@@ -69,11 +71,10 @@ function TaskManager() {
                 </ol>
             </div>
 
-            <div className="summary">
-                <h3>SUMMARY</h3>
-                <p>TOTAL TASKS: {totalTasks}</p>
-                <p>COMPLETED TASKS: {completedTasks}</p>
-                <p>PENDING TASKS: {pendingTasks}</p>
+            <div class="Card">
+                <div><p>TOTAL TASKS: {totalTasks}</p></div>
+                <div><p>COMPLETED TASKS: {completedTasks}</p></div>
+                <div><p>PENDING TASKS: {pendingTasks}</p></div>
             </div>
         </div>
     );

@@ -1,9 +1,53 @@
-#title{
-    width: 300px;
-    margin-left: 1px;
-}
-#header {
+#header{
     color: blue;
-    
+    margin-bottom: .5em;
+    text-align: left;
 }
+label{
+    margin-top: 0;
+}
+input {
+    margin-left: 1em;
+}
+#button{
+    margin-top: 1em;
+    margin-left: 18em;
+}
+
+.form {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start; 
+}
+
+.form label {
+    color: blue;
+    font-size: 24px;
+    margin-right: 20px;
+    margin-top: 0; 
+}
+
+.form textarea {
+    border: solid 3px black;
+    border-radius: 3px;
+    width: 20em;
+    height: 10em; /* Adjust height as needed */
+    padding: 10px;
+    line-height: normal;
+    font-size: 16px;
+    margin-top: 0;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+
+.Card {
+    border: 3px solid black; 
+    border-radius: 5px;
+    border-radius: 5px; 
+    padding: 10px; 
+    width: 300px; 
+    margin-left: 3.6em;
+}
+
+
 
